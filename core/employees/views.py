@@ -7,6 +7,9 @@ from django.core.paginator import Paginator
 from .models import Employee
 from .serializers import EmployeeSerializer
 
+def employee_page(request):
+    return render(request, "employees/employees_list.html")
+
 # Create & List Employees
 @api_view(['GET', 'POST'])
 def employee_list_create(request):
