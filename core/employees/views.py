@@ -7,11 +7,18 @@ from django.core.paginator import Paginator
 from .models import Employee
 from .serializers import EmployeeSerializer
 
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
+
+from rest_framework.permissions import IsAuthenticated
+
+@permission_classes([AllowAny])
 def employee_page(request):
     return render(request, "employees/employees_list.html")
 
 # Create & List Employees
 @api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
 def employee_list_create(request):
     """
     GET: List employees (with filtering & pagination)
@@ -60,6 +67,7 @@ def employee_list_create(request):
 
 # Retrieve, Update, Delete Employee
 @api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
 def employee_detail(request, id):
     try:
         employee = Employee.objects.get(id=id)

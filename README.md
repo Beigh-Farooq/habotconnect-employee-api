@@ -734,6 +734,7 @@ For issues, questions, or suggestions, please:
 
 ---
 
-**Happy coding! 🚀**
-
-*Last Updated: January 14, 2026*
+Create super User
+username admin
+email admin@gmail.com
+password admin@123
